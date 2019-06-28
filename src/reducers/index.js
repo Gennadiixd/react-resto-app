@@ -1,12 +1,19 @@
 const initState = {
-    menu: []
+    menu: [],
 }
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
         case 'MENU_LOADED':
             return {
-                menu: action.paylod
+                ...state,
+                menu: action.payload,
+                loading: false
+            }
+        case 'MENU_REQUESTED':
+            return {
+                ...state,
+                loading: true
             }
         default:
             return state;
